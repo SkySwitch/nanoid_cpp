@@ -5,6 +5,7 @@ project (nanoid_cpp
 
 set(CMAKE_CXX_STANDARD 11)
 set(THREADS_PREFER_PTHREAD_FLAG ON)
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
 find_package(Threads REQUIRED)
 
 option(BUILD_TESTS "Build nanoid unit tests" ON)
@@ -35,7 +36,7 @@ endif()
 #############################################
 # Install
 install(DIRECTORY inc/nanoid DESTINATION include)
-install(TARGETS nanoid EXPORT nanoid-targets)
+install(TARGETS nanoid EXPORT nanoid-targets ARCHIVE DESTINATION lib LIBRARY DESTINATION lib)
 install(EXPORT nanoid-targets DESTINATION lib/cmake/nanoid)
 
 # # Config files for find_package()
